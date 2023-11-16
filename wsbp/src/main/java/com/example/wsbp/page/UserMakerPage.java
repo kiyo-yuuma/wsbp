@@ -1,15 +1,21 @@
 package com.example.wsbp.page;
 
+import com.example.wsbp.service.IUserService;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
 @MountPath("UserMaker")
 public class UserMakerPage extends WebPage {
+
+    // IUserService を IoC/DI する
+    @SpringBean
+    private IUserService userService;
 
     public UserMakerPage() {
 
@@ -30,6 +36,8 @@ public class UserMakerPage extends WebPage {
                         + ","
                         + userPass;
                 System.out.println(msg);
+                // IoC/DI した userService のメソッドを呼び出す
+                userService.registerUser(userName, userPass);
                 setResponsePage(new UserMakerCompPage(userNameModel));
             }
         };
