@@ -20,4 +20,11 @@ public class UserService implements IUserService {
         System.out.println("記録行数：" + n);
     }
 
+    @Override
+    public int removeUser(String userName) {
+        int n = authUserRepos.delete(userName);
+        System.out.println("更新行数：" + n);
+        return n;
+    }
+
 }

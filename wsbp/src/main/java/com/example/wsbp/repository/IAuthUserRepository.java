@@ -11,4 +11,12 @@ public interface IAuthUserRepository {
      */
     public int insert(String userName, String userPass);
 
+    /**
+     * ユーザー名を使用してユーザー情報をAuthUserテーブルから削除する
+     *
+     * @param userName ユーザー名
+     * @return データベースの更新行数
+     */
+    public int delete(String userName);
+
 }

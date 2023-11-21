@@ -4,4 +4,6 @@ public interface IUserService {
 
     public void registerUser(String userName, String userPass);
 
+    public int removeUser(String userName);
+
 }
