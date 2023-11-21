@@ -58,7 +58,14 @@ public class UserMakerPage extends WebPage {
         };
         userInfoForm.add(userNameField);
 
-        var userPassField = new PasswordTextField("userPass", userPassModel);
+        var userPassField = new PasswordTextField("userPass", userPassModel) {
+            @Override
+            protected void onInitialize() {
+                super.onInitialize();
+                var validator = StringValidator.lengthBetween(8, 32);
+                add(validator);
+            }
+        };
         userInfoForm.add(userPassField);
     }
 
