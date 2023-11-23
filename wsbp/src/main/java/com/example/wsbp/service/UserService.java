@@ -27,4 +27,11 @@ public class UserService implements IUserService {
         return n;
     }
 
+    @Override
+    public boolean existsUser(String userName, String userPass) {
+        var result = authUserRepos.exists(userName, userPass);
+        System.out.println(userName + ", " + userPass + " のユーザ照合結果：" + result);
+        return result;
+    }
+
 }

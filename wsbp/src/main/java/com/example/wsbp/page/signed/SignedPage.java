@@ -16,8 +16,9 @@ import org.wicketstuff.annotation.mount.MountPath;
 @MountPath("Signed")
 public class SignedPage extends WebPage {
     public SignedPage() {
-        var name = Model.of("test");
-        var userNameLabel = new Label("userName", name);
+        var userNameLabel = new Label("userName", MySession.get().getUserName());
+//        var name = Model.of("test");
+//        var userNameLabel = new Label("userName", name);
         add(userNameLabel);
 
         Link<Void> signoutLink = new Link<Void>("signout") {
